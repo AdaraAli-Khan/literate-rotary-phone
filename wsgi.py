@@ -75,7 +75,7 @@ def list_user_command(format):
 
 app.cli.add_command(user_cli) # add the group to the cli
 
-# Student CLI commands
+# Student CLI commands:
 student_cli = AppGroup('student', help='Student object commands')
 
 
@@ -97,6 +97,7 @@ def list_student_command():
     for student in students:
         print(f"ID: {student['id']}, Name: {student['studentName']}, Hours: {student['totalHours']}")
 
+#create student leaderboard
 @student_cli.command("leaderboard", help="Shows the student leaderboard")
 def leaderboard_command():
     rankings, message = view_leaderboard()
@@ -113,25 +114,19 @@ def leaderboard_command():
 def accolades_command(username):
     student = StudentController.get_student_username(username)
     if student:
-        accolades, message = StudentController.view_accolades(student.id)
         print(f"\n=== {student.studentName}'s ACCOLADES ===")
-        if accolades:
-            for accolade in accolades:
-                accolade_data = accolade.get_json()
-                # Choose emoji and label based on milestone
-                if accolade_data['milestone'] == 10:
-                    emoji = '🥉'
-                elif accolade_data['milestone'] == 25:
-                    emoji = '🥈'
-                elif accolade_data['milestone'] == 50:
-                    emoji = '🥇'
-                else:
-                    emoji = '🏆'
-                print(f"{emoji} {accolade_data['name']} ({accolade_data['milestone']} hours)")
+
+        if student.totalHours >= 50:
+            print("Gold Service Award (50 hours)")
+        elif student.totalHours >= 25:
+            print("Silver Service Award (25 hours)")
+        elif student.totalHours >= 10:
+            print("Bronze Service Award (10 hours)")
         else:
             print("No accolades earned yet.")
     else:
         print("Student not found")
+
 
 app.cli.add_command(student_cli)
 
@@ -245,7 +240,7 @@ def accolades_command(username):
         if accolades:
             for accolade in accolades:
                 accolade_data = accolade.get_json()
-                print(f"🏆 {accolade_data['name']} - {accolade_data['milestone']} hours")
+                print(f"gold {accolade_data['name']} - {accolade_data['milestone']} hours")
         else:
             print("No accolades earned yet.")
     else:

@@ -76,8 +76,14 @@ class Student(User):
         return leaderboard.generateRankings()
 
     def viewAccolades(self):
-        """View student's accolades"""
-        return self.accolades
+        """View student's unique, actually earned accolades (no duplicates)"""
+        unique = {}
+        for accolade in self.accolades:
+            # Only keep the first accolade per milestone
+            if accolade.milestone not in unique:
+                unique[accolade.milestone] = accolade
+        # Return accolades sorted by milestone (optional)
+        return [unique[m] for m in sorted(unique.keys())]
 
 class Staff(User):
     __tablename__ = 'staff'
@@ -85,7 +91,7 @@ class Staff(User):
     staffName = db.Column(db.String(100), nullable=False)
     staffEmail = db.Column(db.String(100))
     
-    # Fixed relationship
+    
     confirmedHours = db.relationship('LoggedHours', backref='confirming_staff', 
                                    foreign_keys='LoggedHours.staffID', lazy=True)
 
