@@ -103,6 +103,7 @@ When connecting the project to a fresh empty database ensure the appropriate con
 ```bash
 $ flask init
 ```
+output->  database initialized
 
 # Database Migrations
 If changes to the models are made, the database must be'migrated' so that it can be synced with the new models.
@@ -136,6 +137,64 @@ You can then execute all user tests as follows
 
 ```bash
 $ flask test user
+```
+
+CLI COMMANDS - USER
+```
+-create a user: $ flask user create <username> <password> <user_type>
+e.g
+flask user create jake jakepass student
+output: jake (student) created!
+
+-list all users :$flask user list
+output: Username: jake, Type: student
+
+
+```
+CLI COMMANDS -STUDENT
+```
+-create a student : $flask student create <username> <password> <studentName> <studentEmail>
+e.g flask student create jake jakepass "Jake Johnson" jake@example.com
+output-Student jake created successfully!
+
+
+-list all students: $flask student list
+e.g ID: 1, Name: Jake Johnson, Hours: 0
+
+-view leaderboard: $flask student leaderboard
+e.gflask student leaderboard
+output-===== STUDENT LEADERBOARD =====
+            1. Jake Johnson: 10 hours
+        ===============================
+
+-view accolades: $flask student accolades <username>
+e.g flask student accolades jake
+output-  === Jake Johnson's ACCOLADES ===
+          Silver Service Award (25 hours)
+
+
+```
+CLI COMMANDS- STAFF
+```
+-create staff :$flask staff create <username> <password> <staffName> <staffEmail>
+e.g flask staff create admin adminpass "Alice Admin" admin@example.com
+output- Staff admin created successfully!
+
+
+-list all staff: $flask staff list
+output-ID: 1, Name: Alice Admin, Email: admin@example.com
+
+-log all hours for student: $flask staff log-hours <staff_username> <student_username> <hours> <description>
+e.g flask staff log-hours admin jake 5 "Community cleanup"
+output-Logged 5 hours for Jake Johnson: Community cleanup
+        Log ID: 1
+        isConfirmed: False
+
+-confirm logged hours: $flask staff confirm-hours <staff_username> <log_id>
+e.g flask staff confirm-hours admin 1
+output:Confirmed 5 hours for Jake Johnson
+       Student's total hours: 15
+
 ```
 
 You can also supply "unit" or "int" at the end of the comand to execute only unit or integration tests.
