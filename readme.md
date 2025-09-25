@@ -146,7 +146,7 @@ e.g
 flask user create jake jakepass student
 output: jake (student) created!
 
--list all users :$flask user list
+-list all users :$flask user list string
 output: Username: jake, Type: student
 
 
