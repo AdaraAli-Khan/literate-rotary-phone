@@ -51,9 +51,9 @@ flask student create <username> <password> <studentName> <studentEmail>
 ```
 # Example:
 ```
-flask student create jake jakepass "Jake Johnson" jake@example.com
+flask student create mike mikepass "Mike Miller" mike@example.com
 # Output:
-# Student jake created successfully!
+# Student mike created successfully!
 ```
 
 6. List students
