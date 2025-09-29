@@ -1,3 +1,8 @@
+This project is a Flask web application built using the MVC (Model–View–Controller) architecture.
+It provides a platform for students and staff to interact in a structured way:
+Students can track their volunteer or service hours, appear on leaderboards, and earn accolades/awards.
+Staff can manage student accounts, log community service hours, and confirm hours submitted.
+The system includes CLI commands for quick database management, user creation, logging hours, and viewing reports.
 
 # Dependencies
 * Python3/pip3
