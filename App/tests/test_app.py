@@ -6,6 +6,7 @@ from App.controllers import (
 )
 
 
+
 @pytest.fixture
 def app():
     app = create_app({'TESTING': True, 'SQLALCHEMY_DATABASE_URI': 'sqlite:///:memory:'})
