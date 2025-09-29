@@ -51,9 +51,9 @@ flask student create <username> <password> <studentName> <studentEmail>
 ```
 # Example:
 ```
-flask student create jake jakepass "Jake Johnson" mike@example.com
+flask student create mike mikepass "mike ali" mike@example.com
 # Output:
-# Student jake created successfully!
+# Student mike created successfully!
 ```
 
 6. List students
@@ -62,7 +62,7 @@ flask student list
 ```
 # Output:
 ```
- ID: 1, Name: jake Johson, Hours: 0
+ ID: 1, Name: mike ali, Hours: 0
 ```
 
 7. View leaderboard
@@ -72,7 +72,7 @@ flask student leaderboard
 # Output:
 ```
  ===== STUDENT LEADERBOARD =====
-1. Jake Johnson: 10 hours
+1. mike ali : 0 hours
  ===============================
 ```
 
@@ -82,10 +82,10 @@ flask student accolades <username>
 ```
 # Example:
 ```
-flask student accolades jake
+flask student accolades mike
  Output:
- === Jake Johnson's ACCOLADES ===
- Silver Service Award (25 hours)
+ === Mike Johnson's ACCOLADES ===
+No accolades earned yet.
 ```
 staff Commands
 9.Create staff
@@ -105,7 +105,7 @@ flask staff list
 ```
 # Output:
 ```
- ID: 1, Name: Alice Admin, Email: admin@example.com
+ ID: 4, Name: Alice Admin, Email: admin@example.com
 ```
 11. Log hours for a student
 ```
@@ -113,9 +113,9 @@ flask staff log-hours <staff_username> <student_username> <hours> <description>
 ```
 # Example:
 ```
-flask staff log-hours admin jake 5 "Community cleanup"
+flask staff log-hours admin mike 5 "Community cleanup"
 # Output:
-# Logged 5 hours for Jake Johnson: Community cleanup
+# Logged 5 hours for Mike Ali: Community cleanup
 # Log ID: 1
 # isConfirmed: False
 ```
@@ -128,16 +128,20 @@ flask staff confirm-hours <staff_username> <log_id>
 ```
 flask staff confirm-hours admin 1
 # Output:
-# Confirmed 5 hours for Jake Johnson
+# Confirmed 5 hours for Mike Ali
 # Student's total hours: 15
 ```
 #testing
 ```
 $ pytest
 
-$ pytest -m unit
+$ pytest -s App/tests/test_app.py
 
-$ pytest -m integration
+$pytest App/tests/test_app.py
+
+$pytest -k test_student_accolades
+
+flask test user
 ```
 
 
