@@ -62,7 +62,7 @@ flask student list
 ```
 # Output:
 ```
- ID: 1, Name: Jake Johnson, Hours: 0
+ ID: 3, Name: mike Miller, Hours: 0
 ```
 
 7. View leaderboard
