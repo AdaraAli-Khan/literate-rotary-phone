@@ -3,12 +3,12 @@
 * Python3/pip3
 * Packages listed in requirements.txt
 
-# Installing Dependencies
+1. Installing Dependencies
 ```bash
 $ pip install -r requirements.txt
 ```
 
-Initialize Database
+2.Initialize Database
 # Empty database
 flask init
 flask initialize
@@ -20,7 +20,7 @@ _For development run the serve command (what you execute):_
 $ flask run
 ```
 #user commands:
-# Create a user
+3. Create a user
 ```
 flask user create <username> <password> <user_type>
 ```
@@ -30,7 +30,7 @@ flask user create jake jakepass student
 # Output:
 # jake (student) created!
 ```
-# List all users
+4. List all users
 ```
 flask user list string
 ```
@@ -40,7 +40,7 @@ flask user list string
 ```
 
 #student commands:
-# Create a student
+5. Create a student
 ```
 flask student create <username> <password> <studentName> <studentEmail>
 ```
@@ -51,7 +51,7 @@ flask student create jake jakepass "Jake Johnson" jake@example.com
 # Student jake created successfully!
 ```
 
-# List students
+6. List students
 ```
 flask student list
 ```
@@ -60,7 +60,7 @@ flask student list
  ID: 1, Name: Jake Johnson, Hours: 0
 ```
 
-# View leaderboard
+7. View leaderboard
 ```
 flask student leaderboard
 ```
@@ -71,7 +71,7 @@ flask student leaderboard
  ===============================
 ```
 
-# View accolades
+8.View accolades
 ```
 flask student accolades <username>
 ```
@@ -83,7 +83,7 @@ flask student accolades jake
  Silver Service Award (25 hours)
 ```
 staff Commands
-# Create staff
+9.Create staff
 ```
 flask staff create <username> <password> <staffName> <staffEmail>
 ```
@@ -94,7 +94,7 @@ flask staff create admin adminpass "Alice Admin" admin@example.com
 # Staff admin created successfully!
 ```
 
-# List staff
+10. List staff
 ```
 flask staff list
 ```
@@ -102,8 +102,7 @@ flask staff list
 ```
  ID: 1, Name: Alice Admin, Email: admin@example.com
 ```
-
-# Log hours for a student
+11. Log hours for a student
 ```
 flask staff log-hours <staff_username> <student_username> <hours> <description>
 ```
@@ -116,7 +115,7 @@ flask staff log-hours admin jake 5 "Community cleanup"
 # isConfirmed: False
 ```
 
-# Confirm student hours
+12.Confirm student hours
 ```
 flask staff confirm-hours <staff_username> <log_id>
 ```
@@ -127,8 +126,14 @@ flask staff confirm-hours admin 1
 # Confirmed 5 hours for Jake Johnson
 # Student's total hours: 15
 ```
+#testing
+```
+$ pytest
 
+$ pytest -m unit
 
+$ pytest -m integration
+```
 
 
 
