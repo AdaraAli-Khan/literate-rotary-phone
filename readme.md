@@ -51,9 +51,9 @@ flask student create <username> <password> <studentName> <studentEmail>
 ```
 # Example:
 ```
-flask student create mike mikepass "Mike Miller" mike@example.com
+flask student create jake jakepass "Jake Johnson" mike@example.com
 # Output:
-# Student mike created successfully!
+# Student jake created successfully!
 ```
 
 6. List students
@@ -62,7 +62,7 @@ flask student list
 ```
 # Output:
 ```
- ID: 3, Name: mike Miller, Hours: 0
+ ID: 1, Name: jake Johson, Hours: 0
 ```
 
 7. View leaderboard
