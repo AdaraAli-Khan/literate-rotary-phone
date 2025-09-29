@@ -19,118 +19,85 @@ _For development run the serve command (what you execute):_
 ```bash
 $ flask run
 ```
-
-
-
-
-
-
-
-```
-
-CLI COMMANDS - USER
-```
--create a user: $ flask user create <username> <password> <user_type>
-e.g
+user commands:
+# Create a user
+flask user create <username> <password> <user_type>
+# Example:
 flask user create jake jakepass student
-output: jake (student) created!
+# Output:
+# jake (student) created!
 
--list all users :$flask user list string
-output: Username: jake, Type: student
+# List all users
+flask user list string
+# Output:
+# Username: jake, Type: student
+
+student commands:
+# Create a student
+flask student create <username> <password> <studentName> <studentEmail>
+# Example:
+flask student create jake jakepass "Jake Johnson" jake@example.com
+# Output:
+# Student jake created successfully!
+
+# List students
+flask student list
+# Output:
+# ID: 1, Name: Jake Johnson, Hours: 0
+
+# View leaderboard
+flask student leaderboard
+# Output:
+# ===== STUDENT LEADERBOARD =====
+# 1. Jake Johnson: 10 hours
+# ===============================
+
+# View accolades
+flask student accolades <username>
+# Example:
+flask student accolades jake
+# Output:
+# === Jake Johnson's ACCOLADES ===
+# Silver Service Award (25 hours)
+
+staff Commands
+# Create staff
+flask staff create <username> <password> <staffName> <staffEmail>
+# Example:
+flask staff create admin adminpass "Alice Admin" admin@example.com
+# Output:
+# Staff admin created successfully!
+
+# List staff
+flask staff list
+# Output:
+# ID: 1, Name: Alice Admin, Email: admin@example.com
+
+# Log hours for a student
+flask staff log-hours <staff_username> <student_username> <hours> <description>
+# Example:
+flask staff log-hours admin jake 5 "Community cleanup"
+# Output:
+# Logged 5 hours for Jake Johnson: Community cleanup
+# Log ID: 1
+# isConfirmed: False
+
+# Confirm student hours
+flask staff confirm-hours <staff_username> <log_id>
+# Example:
+flask staff confirm-hours admin 1
+# Output:
+# Confirmed 5 hours for Jake Johnson
+# Student's total hours: 15
 
 
-```
-CLI COMMANDS -STUDENT
-```
--create a student : $flask student create <username> <password> <studentName> <studentEmail>
-e.g flask student create jake jakepass "Jake Johnson" jake@example.com
-output-Student jake created successfully!
 
 
--list all students: $flask student list
-e.g ID: 1, Name: Jake Johnson, Hours: 0
-
--view leaderboard: $flask student leaderboard
-e.gflask student leaderboard
-output-===== STUDENT LEADERBOARD =====
-            1. Jake Johnson: 10 hours
-        ===============================
-
--view accolades: $flask student accolades <username>
-e.g flask student accolades jake
-output-  === Jake Johnson's ACCOLADES ===
-          Silver Service Award (25 hours)
 
 
-```
-CLI COMMANDS- STAFF
-```
--create staff :$flask staff create <username> <password> <staffName> <staffEmail>
-e.g flask staff create admin adminpass "Alice Admin" admin@example.com
-output- Staff admin created successfully!
 
 
--list all staff: $flask staff list
-output-ID: 1, Name: Alice Admin, Email: admin@example.com
 
--log all hours for student: $flask staff log-hours <staff_username> <student_username> <hours> <description>
-e.g flask staff log-hours admin jake 5 "Community cleanup"
-output-Logged 5 hours for Jake Johnson: Community cleanup
-        Log ID: 1
-        isConfirmed: False
 
--confirm logged hours: $flask staff confirm-hours <staff_username> <log_id>
-e.g flask staff confirm-hours admin 1
-output:Confirmed 5 hours for Jake Johnson
-       Student's total hours: 15
 
-```
 
-You can also supply "unit" or "int" at the end of the comand to execute only unit or integration tests.
-
-You can run all application tests with the following command
-
-```bash
-$ pytest
-```
-
-## Test Coverage
-
-You can generate a report on your test coverage via the following command
-
-```bash
-$ coverage report
-```
-
-You can also generate a detailed html report in a directory named htmlcov with the following comand
-
-```bash
-$ coverage html
-```
-
-# Troubleshooting
-
-## Views 404ing
-
-If your newly created views are returning 404 ensure that they are added to the list in main.py.
-
-```python
-from App.views import (
-    user_views,
-    index_views
-)
-
-# New views must be imported and added to this list
-views = [
-    user_views,
-    index_views
-]
-```
-
-## Cannot Update Workflow file
-
-If you are running into errors in gitpod when updateding your github actions file, ensure your [github permissions](https://gitpod.io/integrations) in gitpod has workflow enabled ![perms](./images/gitperms.png)
-
-## Database Issues
-
-If you are adding models you may need to migrate the database with the commands given in the previous database migration section. Alternateively you can delete you database file.
